@@ -1,0 +1,3 @@
+# to do something to all files in a directory, one at a time
+# e.g., mv file* otherfile*
+for x in $(ls | awk '{print $NF}'); do  SOMECOMMAND old_file=$x; done;
