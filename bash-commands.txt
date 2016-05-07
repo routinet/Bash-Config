@@ -5,3 +5,7 @@ for x in $(ls | awk '{print $NF}'); do  SOMECOMMAND old_file=$x; done;
 # to print a count of occurrance from a column in a file
 # e.g., a log file, check how many time an IP appears in column 2
 awk '{h[$2]++}; END { for(k in h) print k, h[k] }'
+
+# target only files or dirs, recursively
+find . -type d -exec chmod 755 {} +
+find . -type f -exec chmod 600 {} +
