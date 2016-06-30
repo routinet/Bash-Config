@@ -1,0 +1,29 @@
+#!/bin/sh
+# based on /etc/init.d/skeleton
+#
+# remove this section...not necessary, and generates an error
+## kFreeBSD do not accept scripts as interpreters, using #!/bin/sh and sourcing.
+#if [ true != "$INIT_D_SCRIPT_SOURCED" ] ; then
+#    set "$0" "$@"; INIT_D_SCRIPT_SOURCED=true . /lib/init/init-d-script
+#fi
+#
+# Provides is explicit service name for other init.d references
+# Required-Start: add the vboxadd and vboxadd-service references to ensure vb's share module is loaded
+# X-Start-Before: add any services expecting VB mounts to be resolved before service start
+### BEGIN INIT INFO
+# Provides:          virtualmounts
+# Required-Start:    $remote_fs $syslog vboxadd vboxadd-service
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# X-Start-Before:    mysql apache2
+# Short-Description: Mounts VirtualBox shares
+# Description:       Mounts VirtualBox shared folders.
+### END INIT INFO
+
+DESC="Mounts Virtualbox shares"
+
+# "mysql" = VB share name
+# "/media/mysql-data" = local mount point
+mount.vboxsf -o uid=$(id -u mysql),gid=$(id -g mysql),fmode=640,dmode=750 mysql /media/mysql-data/
+
