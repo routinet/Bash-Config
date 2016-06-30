@@ -1,6 +1,10 @@
 #!/bin/sh
 # based on /etc/init.d/skeleton
 #
+# ALSO REMEMBER:
+#  - edit /etc/mysql/my.cnf to change datadir variable
+#  - edit apparmor config to add access to new datadir location (mount point)
+#
 # remove this section...not necessary, and generates an error
 ## kFreeBSD do not accept scripts as interpreters, using #!/bin/sh and sourcing.
 #if [ true != "$INIT_D_SCRIPT_SOURCED" ] ; then
