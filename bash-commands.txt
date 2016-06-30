@@ -9,3 +9,10 @@ awk '{h[$2]++}; END { for(k in h) print k, h[k] }'
 # target only files or dirs, recursively
 find . -type d -exec chmod 755 {} +
 find . -type f -exec chmod 600 {} +
+
+# mount VirtualBox mysql data directory
+# "mysql" = vbox share name
+# "mysql-data" = mount point
+# 107 = mysql uid
+# 111 = mysql gid
+mount.vboxsf -o uid=107,gid=111,fmode=640,dmode=750 mysql mysql-data/
