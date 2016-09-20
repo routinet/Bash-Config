@@ -1,1 +1,7 @@
 ([ \t]+(?=\{)|^[ \t]+|(?<=:)[ \t]+|[\n])
+
+Search for:
+ - all space/tab characters which precede a literal '{'
+ - all space/tab characters found at the beginning of a line
+ - all space/tab characters immediately following a literal ':'
+ - all newline characters
